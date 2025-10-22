@@ -5,14 +5,14 @@ export default function AccountInfo({ user }) {
   ];
 
   return (
-    <section className="w-full max-w-2xl mx-auto text-white">
+    <section className="w-full h-full text-white">
       <h2 className="text-xl font-grifter mb-4">Account</h2>
 
-      <div className="space-y-3">
+      <div className="space-y-3 bg-white/5 border border-white/10 rounded-2xl p-6 h-[400px] flex flex-col justify-center">
         {info.map((item, index) => (
           <div
             key={index}
-            className="flex justify-between items-center px-4 py-3 border border-white/10 rounded-xl bg-white/5"
+            className="flex justify-between items-center px-4 py-4 border border-white/10 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
           >
             <span className="text-sm font-aeonik text-white/90">
               {item.label}

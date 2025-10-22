@@ -2,7 +2,7 @@
 const forms = require('@tailwindcss/forms');
 const typography = require('@tailwindcss/typography');
 const aspectRatio = require('@tailwindcss/aspect-ratio');
-const tailwindfont = require('tailwindcss-awesomefont');
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -22,8 +22,8 @@ module.exports = {
         grifter: ["Grifter", "sans-serif"],
         aeonik: ["Aeonik", "sans-serif"],
         gilroy: ["Gilroy", "sans-serif"],
-      }
+      },
     },
   },
-  plugins: [forms, typography, aspectRatio, tailwindfont],
+  plugins: [forms, typography, aspectRatio],
 };

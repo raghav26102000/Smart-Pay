@@ -57,30 +57,34 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full text-white px-4 py-10 md:px-12">
-      <header className="text-center mb-10">
-        <h1 className="text-[40px] md:text-[59px] font-grifter font-bold mb-2">
+    <div className="w-full min-h-screen text-white px-4 py-6 md:px-8 lg:px-12">
+      <header className="text-center mb-8">
+        <h1 className="text-3xl md:text-5xl lg:text-[56px] font-grifter font-bold mb-2">
           Manage your Rewards and Payments
         </h1>
         <p className="text-sm font-aeonik text-gray-500">Pay with Crypto</p>
       </header>
 
-      <main className="max-w-screen-xl mx-auto">
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <main className="max-w-screen-2xl mx-auto">
+        {/* Top Section - Account & Market Data */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <AccountInfo user={user} />
           <MarketData cryptos={cryptos} />
         </section>
 
-        <section className="mb-10">
-          <Suspense fallback={<LoadingScreen message="Loading purchases..." />}>
-            <PurchaseHistory data={purchaseHistory} />
-          </Suspense>
-        </section>
-
-        <section>
-          <Suspense fallback={<LoadingScreen message="Loading rewards..." />}>
-            <RewardHistory data={rewardHistory} />
-          </Suspense>
+        {/* Bottom Section - Purchase & Reward History Side by Side */}
+        <section className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <div className="w-full">
+            <Suspense fallback={<LoadingScreen message="Loading purchases..." />}>
+              <PurchaseHistory data={purchaseHistory} />
+            </Suspense>
+          </div>
+          
+          <div className="w-full">
+            <Suspense fallback={<LoadingScreen message="Loading rewards..." />}>
+              <RewardHistory data={rewardHistory} />
+            </Suspense>
+          </div>
         </section>
       </main>
     </div>

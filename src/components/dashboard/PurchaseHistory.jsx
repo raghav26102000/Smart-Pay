@@ -65,15 +65,15 @@ export default function PurchaseHistory({ data = [] }) {
     }));
 
   return (
-    <section className="w-full max-w-8xl mx-auto mb-10 text-white">
-      <div className="flex justify-between w-full mb-6 flex-wrap gap-4">
-        <h2 className="text-2xl font-grifter">Purchase History</h2>
+    <section className="w-full h-full text-white">
+      <div className="flex justify-between w-full mb-4 flex-wrap gap-4">
+        <h2 className="text-xl font-grifter">Purchase History</h2>
 
         <div className="flex gap-2">
           <select
             value={methodFilter}
             onChange={(e) => setMethodFilter(e.target.value)}
-            className="bg-[#1c1f26] border border-white/10 rounded-full px-4 py-1 text-sm text-white"
+            className="bg-[#1c1f26] border border-white/10 rounded-full px-3 py-1 text-xs text-white"
           >
             <option>All</option>
             <option>Crypto</option>
@@ -83,7 +83,7 @@ export default function PurchaseHistory({ data = [] }) {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-[#1c1f26] border border-white/10 rounded-full px-4 py-1 text-sm text-white"
+            className="bg-[#1c1f26] border border-white/10 rounded-full px-3 py-1 text-xs text-white"
           >
             <option>All</option>
             <option>Completed</option>
@@ -93,30 +93,28 @@ export default function PurchaseHistory({ data = [] }) {
         </div>
       </div>
 
-      {/* Scrollable Container */}
-      <div className="w-full overflow-x-auto">
-        <div className="border border-white/10 rounded-2xl overflow-hidden shadow-inner">
-          {/* Table Header */}
-          <div className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-sm font-aeonik px-6 py-3 rounded-t-2xl grid grid-cols-7 gap-4">
-            {columns.map((col, idx) => (
-              <div
-                key={idx}
-                className="whitespace-nowrap text-center overflow-hidden"
-              >
-                {col}
-              </div>
-            ))}
-          </div>
+      {/* Scrollable Container with Fixed Height */}
+      <div className="border border-white/10 rounded-2xl overflow-hidden shadow-inner h-[500px] flex flex-col">
+        {/* Table Header - Fixed */}
+        <div className="bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-xs font-aeonik px-4 py-2.5 grid grid-cols-7 gap-2 flex-shrink-0">
+          {columns.map((col, idx) => (
+            <div
+              key={idx}
+              className="whitespace-nowrap text-center overflow-hidden"
+            >
+              {col}
+            </div>
+          ))}
+        </div>
 
-          {/* Table Rows */}
-          <div className="divide-y divide-white/10">
-            <Table
-              columns={columns}
-              data={filteredData}
-              hideHeader
-              rowClassName="px-6 py-4 grid grid-cols-7 gap-4 items-center hover:bg-white/5 transition-all text-center"
-            />
-          </div>
+        {/* Table Rows - Scrollable */}
+        <div className="divide-y divide-white/10 overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+          <Table
+            columns={columns}
+            data={filteredData}
+            hideHeader
+            rowClassName="px-4 py-3 grid grid-cols-7 gap-2 items-center hover:bg-white/5 transition-all text-center text-xs"
+          />
         </div>
       </div>
     </section>

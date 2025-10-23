@@ -12,7 +12,7 @@ export const fetchDashboardData = (userEmail) => {
     try {
       const [userRes, cryptosRes, purchasesRes, rewardsRes] = await Promise.all(
         [
-          supabase.from("users").select("*").eq("email", userEmail).single(),
+          supabase.from("users").select("*").eq("email", userEmail).maybeSingle(),
           supabase.from("cryptos").select("*"),
           supabase
             .from("purchase_history")

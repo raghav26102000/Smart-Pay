@@ -199,7 +199,7 @@ export default function MerchantNavbar() {
       )}
 
       {/* CSS Animations */}
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes fadeSlideDown {
           from {
             opacity: 0;
@@ -210,7 +210,7 @@ export default function MerchantNavbar() {
             transform: translateY(0);
           }
         }
-      `}</style>
+      `}</style> */}
     </header>
   );
 }

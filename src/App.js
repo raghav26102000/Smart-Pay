@@ -8,7 +8,7 @@ const savedUser = localStorage.getItem("authUser");
 if (savedUser) {
   store.dispatch(setUser(JSON.parse(savedUser)));
 }
-
+// main sys
 export default function App() {
   return (
     <Provider store={store}>
